@@ -2,6 +2,7 @@
 @section('title', '編集フォーム')
 @section('content')
 <div class="row">
+    <div class="table-responsive">
     <div class="col-md-8 col-md-offset-2">
         <h2>編集フォーム</h2>
         <form method="POST" action="{{ route('update') }}" onSubmit="return checkSubmit()">

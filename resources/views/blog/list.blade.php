@@ -1,8 +1,9 @@
 @extends('layout')
 @section('title', '商品一覧')
 @section('content')
-
+<div class="container">
 <div class="row">
+<div class="table-responsive">
   <div class="col-md-10 col-md-offset-2">
       <h2>商品一覧</h2>
 <!--↓↓ 検索フォーム ↑↑-->
@@ -21,7 +22,7 @@
 
      </select>
 
-    <input type="submit" value="検索" >
+     <td><button type="submit" class="btn btn-primary" onclick=>検索</button></td>
 
     </div>
 
@@ -52,10 +53,10 @@
               <td>{{ $blog->price }}</td>
               <td>{{ $blog->stock }}</td>
               <td>{{ $blog->company }}</td>
-              <td><button type="button" class="btnbtn-primary" onclick="location.href='/blog/{{ $blog->id }}'">詳細表示</button></td>
+              <td><button type="button" class="btn btn-success" onclick="location.href='/blog/{{ $blog->id }}'">詳細表示</button></td>
               <form method="POST" action="{{ route('delete', $blog->id) }}" onSubmit="return checkDelete()">
             　@csrf
-              <td><button type="submit" class="btn btn-primary" onclick=>削除</button></td></form>
+              <td><button type="submit" class="btn btn-danger" onclick=>削除</button></td></form>
           </tr>
           @endforeach
       </table>

@@ -9,10 +9,13 @@ use App\Http\Requests\BlogRequest;
 class BlogController extends Controller
 {
 
-     /**
-     *　ホーム画面を表示する
-     * @return view
-     */
+
+      //  ログインしていないとController内の処理ができないようにする
+      public function __construct()
+      {
+          $this->middleware('auth')->except(['exeSrore']);
+      }
+
 
     public function showHome()
     {

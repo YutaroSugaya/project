@@ -29,7 +29,7 @@ Route::get('/blog/{id}','BlogController@showDetail')->name('show');
 //編集画面を表示
 Route::get('/blog/edit/{id}','BlogController@showEdit')->name('edit');
 
-
+//商品の更新
 Route::post('/blog/update', 'BlogController@exeUpdate')->name('update');
 
 //削除
@@ -39,5 +39,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//検索機能
+// 検索機能
 Route::get('/search', 'BlogController@getSearch')->name('search');

@@ -2,6 +2,7 @@
 @section('title', '新規追加')
 @section('content')
 <div class="row">
+    <div class="table-responsive">
     <div class="col-md-8 col-md-offset-2">
         <h2>新規登録フォーム</h2>
         <form method="POST" action="{{ route('store') }}" onSubmit="return checkSubmit()">
