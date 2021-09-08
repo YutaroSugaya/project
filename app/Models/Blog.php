@@ -3,14 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable; //追記
+
 
 class Blog extends Model
 {
-    //
+
+    use Sortable; //追記
+
     protected $table = 'blogs';
 
-    protected $fillable =
-    [
+    protected $fillable = [
         'image',
         'productName',
         'price',
@@ -18,4 +21,12 @@ class Blog extends Model
         'company',
         'content'
     ];
+    public $sortable = [
+        'id',
+        'productName',
+        'price',
+        'stock',
+        'company',
+        'content'
+    ]; //追記(ソートに使うカラムを指定
 }

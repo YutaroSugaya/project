@@ -13,7 +13,7 @@ class CreateBlogsTable extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('blogs')){
+        if (!Schema::hasTable('blogs')) {
             Schema::create('blogs', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->text('image');
@@ -23,7 +23,7 @@ class CreateBlogsTable extends Migration
                 $table->string('company');
                 $table->text('content');
                 $table->timestamps();
-        });
+            });
         }
     }
 
