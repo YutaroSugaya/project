@@ -9,6 +9,8 @@
         <th>詳細画面</th>
         <th>データ削除</th>
     </tr>
+
+
     @foreach ($blogs as $blog)
         <tr class="blog-list">
             <td>{{ $blog->id }}</td>
@@ -16,16 +18,18 @@
             <td>{{ $blog->productName }}</td>
             <td>{{ $blog->price }}</td>
             <td>{{ $blog->stock }}</td>
-            <td>{{ $blog->company }}</td>
+            @foreach ($companies as $companie)
+                <td>{{ $companie->company_name }}</td>
+            @endforeach
+            
             <td><button type="button" class="btn btn-success"
                     onclick="location.href='/blog/{{ $blog->id }}'">詳細表示</button></td>
             <td><button onclick="return confirm('本当に削除しますか？')" class="btn btn-danger removeList">削除</button></td>
-            {{-- <form method="POST" action="{{ route('delete', $blog->id) }}" onSubmit="return checkDelete()"> --}}
             @csrf
-            {{-- <td><button type="submit" class="btn btn-danger" onclick=>削除</button></td></form> --}}
-        </tr>
-    @endforeach
 
+        </tr>
+
+    @endforeach
 </table>
 
 {!! $blogs->links() !!}

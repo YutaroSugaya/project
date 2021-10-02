@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\Companie;
 use App\Http\Requests\BlogRequest;
 use GuzzleHttp\Client;
 
@@ -12,20 +13,22 @@ class BlogController extends Controller
 {
 
 
+
     //  ログインしていないとController内の処理ができないようにする
     public function __construct()
     {
         $this->middleware('auth')->except(['exeSrore']);
     }
 
-
-    //ログイン画面を表示する
-
     public function showHome()
     {
-        $blogs = Blog::all();
-        return view('blog.welcome', ['blogs' => $blogs]);
+
+        $blogs = new Blog;
+        $companies = new Companie;
+
+        return view('blog.welcome', ['blogs' => $blogs, 'companies' => $companies]);
     }
+
 
     /**
      * 記事一覧の表示
@@ -33,18 +36,22 @@ class BlogController extends Controller
 
     public function showList()
     {
+
         $blogs = Blog::orderBy('id', 'asc');
         $blogs = Blog::sortable()->paginate(5);
-        return view('blog.list', compact('blogs'));
+        $companies = Companie::all();
+
+        return view('blog.list', ['blogs' => $blogs, 'companies' => $companies]);
     }
 
     //記事一覧の表示(2ページ目以降)
     public function fetchList(Request $request)
     {
         if ($request->ajax()) {
+            $companies = Companie::orderBy('id');
             $blogs = Blog::orderBy('id', 'asc');
             $blogs = Blog::sortable()->paginate(5);
-            return view('blog.list_child', compact('blogs'))->render();
+            return view('blog.list_child', ['blogs' => $blogs, 'companies' => $companies])->render();
         }
     }
 
@@ -65,9 +72,9 @@ class BlogController extends Controller
     //     $query = Blog::query();
 
     //     //キーワードが入力されている場合
-    //     if(!empty($keyword))
+    //     if(!empty($keyword)){
     //     $query->where('productName', 'like', '%'.$keyword.'%');
-
+    //}
     //     $blogs = $query->paginate(20);
 
     //      //会社名が入力されている場合
@@ -183,14 +190,9 @@ class BlogController extends Controller
         //データを受け取る
         $inputs = $request->all();
         \DB::beginTransaction();
-        try {
-            //登録
-            Blog::create($inputs);
-            \DB::commit();
-        } catch (\Throwable $e) {
-            \DB::rollback();
-            abort(500);
-        }
+        //登録
+        Blog::create($inputs);
+        \DB::commit();
         \Session::flash('err_msg', '商品を登録しました');
         return redirect(route('blogs'));
     }
@@ -230,7 +232,7 @@ class BlogController extends Controller
                 'productName' => $inputs['productName'],
                 'price' => $inputs['price'],
                 'stock' => $inputs['stock'],
-                'company' => $inputs['company'],
+                'company_name' => $inputs['company_name'],
                 'content' => $inputs['content'],
                 'image' => $inputs['image'],
             ]);

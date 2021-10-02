@@ -8,8 +8,7 @@
                     <h2>商品一覧</h2>
 
 
-                    <p><input type="text" name="keyword" class="form-control mr-sm-2" id="keyword"
-                            placeholder="商品名または会社名を入力"></p>
+                    <p><input type="text" name="keyword" class="form-control mr-sm-2" id="keyword" placeholder="商品名または会社名を入力"></p>
                     <p><input type="text" name="number1" class="form-control mr-sm-2" id="number1" placeholder="価格下限"></p>
                     <p><input type="text" name="number2" class="form-control mr-sm-2" id="number2" placeholder="価格上限"></p>
                     <p><input type="text" name="number3" class="form-control mr-sm-2" id="number3" placeholder="在庫下限"></p>

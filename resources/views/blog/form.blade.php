@@ -90,11 +90,14 @@
                         <button type="submit" class="btn btn-primary">
                             登録する
                         </button>
+                        <script src="{{ asset('js/hoge.js') }}"></script>
                     </div>
                 </form>
             </div>
         </div>
-        <script>
+
+
+        {{-- <script>
             function checkSubmit() {
                 if (window.confirm('登録してよろしいですか？')) {
                     return true;
@@ -102,5 +105,5 @@
                     return false;
                 }
             }
-        </script>
+        </script> --}}
     @endsection

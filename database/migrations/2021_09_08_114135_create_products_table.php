@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlogsTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,18 @@ class CreateBlogsTable extends Migration
      */
     public function up()
     {
+        if (!Schema::hasTable('blogs')) {
             Schema::create('blogs', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->text('image');
                 $table->string('productName');
                 $table->integer('price');
                 $table->integer('stock');
+                $table->string('company_id');
                 $table->text('content');
                 $table->timestamps();
-
             });
+        }
     }
 
     /**

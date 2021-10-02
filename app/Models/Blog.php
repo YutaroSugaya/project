@@ -18,7 +18,7 @@ class Blog extends Model
         'productName',
         'price',
         'stock',
-        'company',
+        'blog_id',
         'content'
     ];
     public $sortable = [
@@ -26,7 +26,18 @@ class Blog extends Model
         'productName',
         'price',
         'stock',
-        'company',
         'content'
     ]; //追記(ソートに使うカラムを指定
+
+    public function companie()
+    {
+        return $this->hasMany(Companie::class);
+    }
+
+
+
+
+
 }
+
+?>
