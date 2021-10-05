@@ -18,8 +18,9 @@ class Blog extends Model
         'productName',
         'price',
         'stock',
-        'blog_id',
-        'content'
+        'content',
+        'companie_id',
+        'company_name'
     ];
     public $sortable = [
         'id',
@@ -29,12 +30,14 @@ class Blog extends Model
         'content'
     ]; //追記(ソートに使うカラムを指定
 
-    public function companie()
-    {
-        return $this->hasMany(Companie::class);
+    // public function companie()
+    // {
+    //     return $this->hasMany(Companie::class);
+    // }
+
+    public function companie(){
+        return $this->belongsTo(Companie::class);
     }
-
-
 
 
 

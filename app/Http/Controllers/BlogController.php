@@ -42,7 +42,7 @@ class BlogController extends Controller
         $companies = Companie::all();
 
         return view('blog.list', ['blogs' => $blogs, 'companies' => $companies]);
-    }
+        }
 
     //記事一覧の表示(2ページ目以降)
     public function fetchList(Request $request)

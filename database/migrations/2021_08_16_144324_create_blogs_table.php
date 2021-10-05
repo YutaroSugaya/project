@@ -19,6 +19,8 @@ class CreateBlogsTable extends Migration
                 $table->string('productName');
                 $table->integer('price');
                 $table->integer('stock');
+                $table->bigInteger('companie_id')->unsigned();
+                $table->foreign('companie_id')->references('id')->on('companies');
                 $table->text('content');
                 $table->timestamps();
 

@@ -15,8 +15,6 @@ class CreateCompaniesTable extends Migration
     {
             Schema::create('companies', function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->bigInteger('blog_id');
-                $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
                 $table->string('company_name');
                 $table->string('street_address');
                 $table->timestamps();
