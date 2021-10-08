@@ -37,12 +37,35 @@ class BlogController extends Controller
     public function showList()
     {
 
-        $blogs = Blog::orderBy('id', 'asc');
-        $blogs = Blog::sortable()->paginate(5);
-        $companies = Companie::all();
+        //$blogs = Blog::orderBy('id', 'asc');
+        $blogs1 = Blog::all();
+        $blogs2 = Blog::sortable()->paginate(5);
+        //$blogs3 = Blog::find(1);
 
-        return view('blog.list', ['blogs' => $blogs, 'companies' => $companies]);
+        $test[] = 0;
+
+        for ($i = 0; $i < count($blogs1); $i++) {
+            $blogs3 = Blog::find($i);
+
+            $companyId = $blogs3->companie_id;
+
+            $companies = Companie::find($companyId);
+
+            $companyName = $companies->company_name;
+
+            $test[] = $companyName;
+
+            dd($test);
         }
+
+
+        //$companies = Companie::find(1);
+        //dd($blogs);
+        // $blogs = Blog::with('companie_id')->get();
+        // $companies = Companie::with('blogs:companie_id')->get();
+        // $companies = Blog::with('id')->get();
+        // return view('blog.list', ['blogs' => $blogs1, 'companies' => $companies]);
+    }
 
     //記事一覧の表示(2ページ目以降)
     public function fetchList(Request $request)

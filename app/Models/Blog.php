@@ -19,8 +19,7 @@ class Blog extends Model
         'price',
         'stock',
         'content',
-        'companie_id',
-        'company_name'
+        'companie_id'
     ];
     public $sortable = [
         'id',
