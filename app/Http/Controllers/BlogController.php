@@ -7,7 +7,7 @@ use App\Models\Blog;
 use App\Models\Companie;
 use App\Http\Requests\BlogRequest;
 use GuzzleHttp\Client;
-
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
@@ -36,27 +36,31 @@ class BlogController extends Controller
 
     public function showList()
     {
+        $allCompanys = DB::table('blogs')->leftJoin('companies','companies.id','=','blogs.companie_id')->get();
+
+        //$allCompanys = Companie::with('blogs')->get();
+        //dd($allCompanys);
 
         //$blogs = Blog::orderBy('id', 'asc');
-        $blogs1 = Blog::all();
-        $blogs2 = Blog::sortable()->paginate(5);
+        $blogs = Blog::all();
+        $blogs = Blog::sortable()->paginate(5);
         //$blogs3 = Blog::find(1);
 
-        $test[] = 0;
+        // $test[] = 0;
 
-        for ($i = 0; $i < count($blogs1); $i++) {
-            $blogs3 = Blog::find($i);
+        // for ($i = 0; $i < count($blogs1); $i++) {
+        //     $blogs3 = Blog::find($i);
 
-            $companyId = $blogs3->companie_id;
+        //     $companyId = $blogs3->companie_id;
 
-            $companies = Companie::find($companyId);
+        //     $companies = Companie::find($companyId);
 
-            $companyName = $companies->company_name;
+        //     $companyName = $companies->company_name;
 
-            $test[] = $companyName;
+        //     $test[] = $companyName;
 
-            dd($test);
-        }
+        //     dd($test);
+        // }
 
 
         //$companies = Companie::find(1);
@@ -64,7 +68,7 @@ class BlogController extends Controller
         // $blogs = Blog::with('companie_id')->get();
         // $companies = Companie::with('blogs:companie_id')->get();
         // $companies = Blog::with('id')->get();
-        // return view('blog.list', ['blogs' => $blogs1, 'companies' => $companies]);
+        return view('blog.list', compact('blogs','allCompanys'));
     }
 
     //記事一覧の表示(2ページ目以降)

@@ -10,17 +10,22 @@
         <th>データ削除</th>
     </tr>
 
-    @foreach ($blogs as $blog)
+    @foreach ($allCompanys as $blog)
         <tr class="blog-list">
             <td>{{ $blog->id }}</td>
             <td><img src="{{ Storage::url($blog->image) }}" width="30px"></td>
             <td>{{ $blog->productName }}</td>
             <td>{{ $blog->price }}</td>
             <td>{{ $blog->stock }}</td>
-            {{-- @foreach ($companies as $company) --}}
-            <td>{{ $companies->company_name }}</td>
+            {{-- @foreach ($allCompanys as $company) --}}
+            <td>{{ $blog->company_name }}</td>
             {{-- @endforeach --}}
 
+            {{-- <pre>
+                @php
+                    var_dump($blog->company_name);
+                @endphp
+            </pre> --}}
 
 
             <td><button type="button" class="btn btn-success"

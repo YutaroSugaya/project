@@ -20,9 +20,9 @@ class Companie extends Model
     //     return $this->belongsTo(Blog::class);
     // }
 
-    public function blog()
+    public function blogs()
     {
-        return $this->hasMany(Blog::class);
+        return $this->hasMany(Blog::class)->where('companie_id',0)->orderBy('id', 'DESC');
     }
 
 }
