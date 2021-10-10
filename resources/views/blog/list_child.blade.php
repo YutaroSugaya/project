@@ -27,7 +27,7 @@
                 @endphp
             </pre> --}}
 
-
+            
             <td><button type="button" class="btn btn-success"
                     onclick="location.href='/blog/{{ $blog->id }}'">詳細表示</button></td>
             <td><button onclick="return confirm('本当に削除しますか？')" class="btn btn-danger removeList">削除</button></td>
