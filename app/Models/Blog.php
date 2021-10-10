@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable; //追記
 
-
+//test1
 class Blog extends Model
 {
 
