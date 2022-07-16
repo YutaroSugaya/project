@@ -19,3 +19,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // 以下を追加！
 Route::get('test', 'TestAPIController@index');
+
+Route::get('ver','API\VerController@index');
+
+
+
+Route::group(['middleware' => ['api']], function(){
+  Route::resource('articles', 'Api\ArticlesController', ['except' => ['create', 'edit']]);
+});
