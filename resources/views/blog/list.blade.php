@@ -15,18 +15,13 @@
                     <p><input type="text" name="number4" class="form-control mr-sm-2" id="number4" placeholder="在庫上限"></p>
                     <p><input type="button" value="検索" class="btn btn-primary" id="get_blogs"></p>
 
+
                     <div class="blog-table table">
                         @include('blog.list_child')
                     </div>
 
                     <script>
-                        // function checkDelete(){
-                        //     if(window.confirm('削除してよろしいですか？')){
-                        //         return true;
-                        //     } else {
-                        //         return false;
-                        //            }
-                        //     }
+                       
                         $(function() {
                             //記事を削除するときの確認画面
                             $(document).on('click', '.removeList', function() {
@@ -183,4 +178,4 @@
                 </div>
             </div>
 
-        @endsection
+ @endsection
